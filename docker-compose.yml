@@ -10,7 +10,7 @@ volumes:
 
 services:
 
-    web:
+    tripal:
       image: quay.io/galaxy-genome-annotation/tripal 
       volumes:
         - "tripal_sites:/var/www/html/sites"
@@ -24,10 +24,10 @@ services:
       ports:
         - "3000:80"
       depends_on:
-        - postgres
+        - tripal_db
         - elasticsearch
 
-    postgres:
+    tripal_db:
       image: quay.io/galaxy-genome-annotation/chado:1.31-jenkins97-pg9.5
       environment:
         - POSTGRES_PASSWORD=postgres
