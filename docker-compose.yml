@@ -11,7 +11,9 @@ volumes:
 services:
 
     tripal:
-      image: quay.io/galaxy-genome-annotation/tripal 
+      image: quay.io/galaxy-genome-annotation/tripal
+      links:
+        - tripal_db:postgres 
       volumes:
         - "tripal_sites:/var/www/html/sites"
         - "tripal_private:/var/www/private"
