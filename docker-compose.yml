@@ -19,10 +19,11 @@ services:
       environment:
         UPLOAD_LIMIT: 20M
         MEMORY_LIMIT: 128M
-        BASE_URL: "http://localhost:3000/tripal"
-        BASE_URL_PROTO: "http://"
-        DB_HOST: 'tripal_db'
-        DB_NAME: 'tripal'
+        BASE_URL: http://sunflower.divseekcanada.ca
+        BASE_URL_PROTO: http://
+        BASE_URL_PATH: /
+        DB_HOST: tripal_db
+        DB_NAME: tripal
       ports:
         - "8200:80"
       depends_on:
