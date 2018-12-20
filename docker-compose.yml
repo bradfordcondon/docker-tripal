@@ -24,7 +24,7 @@ services:
         DB_HOST: 'tripal_db'
         DB_NAME: 'tripal'
       ports:
-        - "3000:80"
+        - "8200:80"
       depends_on:
         - tripal_db
         - elasticsearch
