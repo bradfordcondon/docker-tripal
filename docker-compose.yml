@@ -1,48 +1,38 @@
 # This is a sample configuration to run a Tripal instance with Docker-Compose.
 
 version: '3'
-
-volumes:
-    tripal_sites:
-    tripal_private:
-    tripal_data:
-    tripal_index:
-
 services:
 
-    web:
-      image: quay.io/galaxy-genome-annotation/tripal 
-      volumes:
-        - "tripal_sites:/var/www/html/sites"
-        - "tripal_private:/var/www/private"
-      environment:
-        UPLOAD_LIMIT: 20M
-        MEMORY_LIMIT: 128M
-        BASE_URL: "http://localhost:3000/tripal"
-        BASE_URL_PROTO: "http://"
-        DB_NAME: 'postgres'
-      ports:
-        - "3000:80"
-      depends_on:
-        - postgres
-        - elasticsearch
+  web:
+    image: quay.io/galaxy-genome-annotation/tripal
+    volumes:
+      - /var/www/html/sites
+      - /var/www/private
+    environment:
+      UPLOAD_LIMIT: 20M
+      MEMORY_LIMIT: 128M
+      BASE_URL: "http://localhost:3000/tripal"
+      BASE_URL_PROTO: "http://"
+      DB_NAME: 'postgres'
+    ports:
+      - "3000:80"
+    depends_on:
+      - postgres
+      - elasticsearch
 
-    postgres:
-      image: quay.io/galaxy-genome-annotation/chado:1.31-jenkins97-pg9.5
-      environment:
-        - POSTGRES_PASSWORD=postgres
-          # The default chado image would try to install the schema on first run,
-          # we just want the tools to be available.
-        - INSTALL_CHADO_SCHEMA=0
-        - INSTALL_YEAST_DATA=0
-        - PGDATA=/var/lib/postgresql/data/
-      volumes:
-        - "tripal_data:/var/lib/postgresql/data/"
+  postgres:
+    image: quay.io/galaxy-genome-annotation/chado:1.31-jenkins97-pg9.5
+    environment:
+      - POSTGRES_PASSWORD=postgres
+        # The default chado image would try to install the schema on first run,
+      # we just want the tools to be available.
+      - INSTALL_CHADO_SCHEMA=0
+      - INSTALL_YEAST_DATA=0
+      - PGDATA=/var/lib/postgresql/data/
+    volumes:
+      - /var/lib/postgresql/data/
 
-    elasticsearch:
-      image: docker.elastic.co/elasticsearch/elasticsearch:6.4.2
-      environment:
-        TAKE_FILE_OWNERSHIP: "true"
-      volumes:
-        - "tripal_index:/usr/share/elasticsearch/data"
-
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.4.2
+    environment:
+      TAKE_FILE_OWNERSHIP: "true"
