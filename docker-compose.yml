@@ -12,8 +12,6 @@ services:
 
     tripal:
       image: quay.io/galaxy-genome-annotation/tripal
-      links:
-        - tripal_db:postgres 
       volumes:
         - "tripal_sites:/var/www/html/sites"
         - "tripal_private:/var/www/private"
@@ -22,7 +20,8 @@ services:
         MEMORY_LIMIT: 128M
         BASE_URL: "http://localhost:3000/tripal"
         BASE_URL_PROTO: "http://"
-        DB_NAME: 'postgres'
+        DB_HOST: 'tripal_db'
+        DB_NAME: 'tripal'
       ports:
         - "3000:80"
       depends_on:
