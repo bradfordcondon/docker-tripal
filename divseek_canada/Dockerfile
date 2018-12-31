@@ -16,4 +16,5 @@ RUN chmod -R +x /scripts/
 
 # Overrides the docker-tripal image CMD entrypoint.sh
 # with a slightly different version here?
+ADD entrypoint.sh /
 CMD ["/entrypoint.sh"]
