@@ -14,7 +14,7 @@ services:
       BASE_URL: https://sunflower.divseekcanada.ca
       BASE_URL_PROTO: https://
       BASE_URL_PATH: /
-      DB_HOST: tripal_db
+      DB_HOST: postgres
       DB_NAME: tripal
       TRIPAL_DOWNLOAD_MODULES: "bootstrap jquery_update panels advanced_help"
       TRIPAL_GIT_CLONE_MODULES: "https://github.com/tripal/tripal_jbrowse.git"
