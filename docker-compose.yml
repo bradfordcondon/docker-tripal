@@ -4,7 +4,7 @@ version: '3'
 services:
 
   tripal:
-    image: quay.io/galaxy-genome-annotation/tripal
+    build: divseek_canada
     volumes:
       - ./volumes/tripal/html:/var/www/html/sites
       - ./volumes/tripal/private:/var/www/private

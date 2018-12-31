@@ -134,6 +134,4 @@ RUN chmod -R +x /scripts/
 
 ADD tripal_apache.conf /etc/apache2/conf-enabled/tripal_apache.conf
 
-ADD DivSeekCanadaLogo.png /DivSeekCanadaLogo.png
-
 CMD ["/entrypoint.sh"]
