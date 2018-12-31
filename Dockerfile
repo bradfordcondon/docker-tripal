@@ -130,6 +130,7 @@ ADD tripal_install.drush.inc /etc/tripal/tripal_install.drush.inc
 # Add README.md, entrypoint-script and scripts-folder
 ADD entrypoint.sh README.md  /
 ADD /scripts/ /scripts/
+RUN chmod -R +x /scripts/
 
 ADD tripal_apache.conf /etc/apache2/conf-enabled/tripal_apache.conf
 
