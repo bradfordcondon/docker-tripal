@@ -11,13 +11,8 @@ services:
     environment:
       UPLOAD_LIMIT: 20M
       MEMORY_LIMIT: 128M
-      SITE_NAME: ${GMOD_SITE_NAME}
-      BASE_URL_PROTO: ${GMOD_SITE_BASE_URL_PROTO}
-      BASE_URL_PATH:  ${GMOD_SITE_BASE_URL_PATH}
-      BASE_URL: ${GMOD_SITE_BASE_URL_PROTO}${GMOD_SITE_BASE_HOSTNAME}${GMOD_SITE_BASE_URL_PATH}
-      DB_HOST:  chado
-      DB_NAME:  postgres
-      #ENABLE_CRON_JOBS: 1
+      DB_HOST:  "chado"
+      DB_NAME:  "postgres"
       TRIPAL_GIT_CLONE_LIBRARIES: "https://github.com/galaxyproject/blend4php.git"
       TRIPAL_DOWNLOAD_MODULES: "bootstrap maillog smtp jquery_update panels advanced_help"
       #
@@ -37,12 +32,12 @@ services:
   chado: ## Tripal's Postgres Database
     image: quay.io/galaxy-genome-annotation/chado:1.31-jenkins21-pg9.5
     environment:
-      - POSTGRES_PASSWORD=postgres
+      POSTGRES_PASSWORD: "${DB_PASS}"
       # The default chado image would try to install the schema on first run, we just want the tools to be available.
       # The reason why is because Tripal will install the schema for us, but won't be able to run if there's an existing schema
-      - INSTALL_CHADO_SCHEMA=0
-      - INSTALL_YEAST_DATA=0
-      - PGDATA=/var/lib/postgresql/data/
+      INSTALL_CHADO_SCHEMA: 0
+      INSTALL_YEAST_DATA: 0
+      PGDATA: /var/lib/postgresql/data/
     volumes:
       - ./volumes/tripal/db:/var/lib/postgresql/data/
 
