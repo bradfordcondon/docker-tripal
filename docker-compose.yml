@@ -12,7 +12,6 @@ services:
       UPLOAD_LIMIT: 20M
       MEMORY_LIMIT: 128M
       DB_HOST:  "chado"
-      DB_NAME:  "postgres"
       TRIPAL_GIT_CLONE_LIBRARIES: "https://github.com/galaxyproject/blend4php.git"
       TRIPAL_DOWNLOAD_MODULES: "bootstrap maillog smtp jquery_update panels advanced_help"
       #
