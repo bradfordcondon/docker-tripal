@@ -5,16 +5,16 @@ FROM quay.io/galaxy-genome-annotation/tripal:latest
 
 MAINTAINER Richard Bruskiewich <richard@starinformatics.com>
 
-ADD ./DivSeekCanadaLogo.* /
+COPY ./DivSeekCanadaLogo.* /
 
 # Overlay DivSeek Canada specific installation scripts
 # added to the core docker-tripal start-up scripts in the image
 # to be run in the prescribed order
-ADD ./scripts /scripts/
+COPY ./scripts /scripts/
 # Make sure that all our scripts are executable
 RUN chmod -R +x /scripts/
 
 # Overrides the docker-tripal image CMD entrypoint.sh
 # with a slightly different version here?
-ADD entrypoint.sh  /entrypoint.sh
+COPY entrypoint.sh  /entrypoint.sh
 CMD ["/entrypoint.sh"]
