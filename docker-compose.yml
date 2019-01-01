@@ -11,12 +11,12 @@ services:
     environment:
       UPLOAD_LIMIT: 20M
       MEMORY_LIMIT: 128M
-      SITE_NAME: "${GMOD_SITE_NAME}"
-      BASE_URL_PROTO: "${GMOD_SITE_BASE_URL_PROTO}"
-      BASE_URL_PATH:  "${GMOD_SITE_BASE_URL_PATH}"
-      BASE_URL: "${GMOD_SITE_BASE_URL_PROTO}${GMOD_SITE_BASE_HOSTNAME}${GMOD_SITE_BASE_URL_PATH}"
-      DB_HOST:  "chado"
-      DB_NAME:  "postgres"
+      SITE_NAME: ${GMOD_SITE_NAME}
+      BASE_URL_PROTO: ${GMOD_SITE_BASE_URL_PROTO}
+      BASE_URL_PATH:  ${GMOD_SITE_BASE_URL_PATH}
+      BASE_URL: ${GMOD_SITE_BASE_URL_PROTO}${GMOD_SITE_BASE_HOSTNAME}${GMOD_SITE_BASE_URL_PATH}
+      DB_HOST:  chado
+      DB_NAME:  postgres
       #ENABLE_CRON_JOBS: 1
       TRIPAL_GIT_CLONE_LIBRARIES: "https://github.com/galaxyproject/blend4php.git"
       TRIPAL_DOWNLOAD_MODULES: "bootstrap maillog smtp jquery_update panels advanced_help"
