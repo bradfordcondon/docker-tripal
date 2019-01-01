@@ -5,6 +5,7 @@ echo "Applying additional DivSeek Canada configuration to the Tripal / Drupal we
 : ${BOOTSTRAP_THEME_PATH:='/var/www/html/sites/all/themes/bootstrap'}
 echo "Setting ${BOOTSTRAP_THEME_PATH}/logo.png to DivSeek Canada logo"
 cp -f /DivSeekCanadaLogo.png ${BOOTSTRAP_THEME_PATH}/logo.png
+cp -f /DivSeekCanadaLogo.ico ${BOOTSTRAP_THEME_PATH}/favicon.ico
 
 #
 # Adding Bootswatch themes to the Bootstrap theme (eventually...)
