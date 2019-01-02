@@ -43,7 +43,7 @@ services:
     postgres:
       image: quay.io/galaxy-genome-annotation/chado:1.31-jenkins21-pg9.5
       environment:
-      - POSTGRES_PASSWORD=postgres
+        - POSTGRES_PASSWORD=postgres
         # The default chado image would try to install the schema on first run,
         # we just want the tools to be available.
         - INSTALL_CHADO_SCHEMA=0
