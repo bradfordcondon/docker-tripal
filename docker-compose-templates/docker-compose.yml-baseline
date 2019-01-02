@@ -4,16 +4,25 @@ version: '3'
 services:
 
   tripal:
-    build: divseek_canada
+    # I'd like to do a fresh build here but it is problematic so far...
+    # works to some extent but fails in some details of the environment
+    # build: ./divseek_canada
+    image: quay.io/galaxy-genome-annotation/tripal:latest
+    links:
+      - postgres
     volumes:
       - ./volumes/tripal/html:/var/www/html/sites
       - ./volumes/tripal/private:/var/www/private
     environment:
       UPLOAD_LIMIT: 20M
       MEMORY_LIMIT: 128M
-      DB_HOST:  "chado"
-      DB_NAME:  "postgres"
-      # ENABLE_CRON_JOBS: 1
+      #DB_HOST:  "chado"
+      DB_NAME: "postgres"
+      #
+      SITE_NAME: "${GMOD_SITE_NAME}"
+      BASE_URL_PROTO: "${GMOD_BASE_URL_PROTO}"
+      BASE_URL_PATH: "${GMOD_BASE_URL_PATH}"
+      BASE_URL: "${GMOD_BASE_URL_PROTO}${GMOD_SITE_BASE_HOSTNAME}${GMOD_BASE_URL_PATH}"
       #
       TRIPAL_GIT_CLONE_LIBRARIES: "https://github.com/galaxyproject/blend4php.git"
       TRIPAL_DOWNLOAD_MODULES: "bootstrap maillog smtp jquery_update panels advanced_help"
@@ -28,15 +37,15 @@ services:
     ports:
       - "8200:80"
     depends_on:
-    - chado
-    - elasticsearch
+      - postgres
+      - elasticsearch
 
-  chado: ## Tripal's Postgres Database
+  postgres:
     image: quay.io/galaxy-genome-annotation/chado:1.31-jenkins21-pg9.5
     environment:
       - POSTGRES_PASSWORD=postgres
-      # The default chado image would try to install the schema on first run, we just want the tools to be available.
-      # The reason why is because Tripal will install the schema for us, but won't be able to run if there's an existing schema
+      # The default chado image would try to install the schema on first run,
+      # we just want the tools to be available.
       - INSTALL_CHADO_SCHEMA=0
       - INSTALL_YEAST_DATA=0
       - PGDATA=/var/lib/postgresql/data/
