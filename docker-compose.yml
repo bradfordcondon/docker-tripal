@@ -9,15 +9,15 @@ services:
       - ./volumes/tripal/html:/var/www/html/sites
       - ./volumes/tripal/private:/var/www/private
     environment:
-      ADMIN_USER: ${GMOD_ADMIN_USER}
-      ADMIN_PASSWORD: ${GMOD_ADMIN_PASSWORD}
       UPLOAD_LIMIT: 20M
       MEMORY_LIMIT: 128M
       DB_HOST:  "chado"
-      SITE_NAME: ${GMOD_SITE_NAME}
-      BASE_URL_PROTO: ${GMOD_SITE_NAME}
-      BASE_URL_PATH: ${GMOD_SITE_NAME}
+      #
+      SITE_NAME: "${GMOD_SITE_NAME}"
+      BASE_URL_PROTO: "${GMOD_BASE_URL_PROTO}"
+      BASE_URL_PATH: "${GMOD_BASE_URL_PATH}"
       BASE_URL: "${GMOD_BASE_URL_PROTO}${GMOD_SITE_BASE_HOSTNAME}${GMOD_BASE_URL_PATH}"
+      #
       TRIPAL_GIT_CLONE_LIBRARIES: "https://github.com/galaxyproject/blend4php.git"
       TRIPAL_DOWNLOAD_MODULES: "bootstrap maillog smtp jquery_update panels advanced_help"
       #
