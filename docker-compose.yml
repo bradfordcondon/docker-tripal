@@ -8,6 +8,8 @@ services:
     # works to some extent but fails in some details of the environment
     # build: ./divseek_canada
     image: quay.io/galaxy-genome-annotation/tripal:latest
+    links:
+      - chado:postgres
     volumes:
       - ./volumes/tripal/html:/var/www/html/sites
       - ./volumes/tripal/private:/var/www/private
@@ -35,10 +37,11 @@ services:
     ports:
       - "8200:80"
     depends_on:
-    - chado
-    - elasticsearch
+      - chado
+      - elasticsearch
 
-  chado: ## Tripal's Postgres Database
+  #chado: ## Tripal's Postgres Database
+  postgres: ## Tripal's Postgres Database
     image: quay.io/galaxy-genome-annotation/chado:1.31-jenkins21-pg9.5
     environment:
       POSTGRES_PASSWORD: "postgres"
