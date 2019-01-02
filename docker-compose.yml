@@ -9,7 +9,7 @@ services:
     # build: ./divseek_canada
     image: quay.io/galaxy-genome-annotation/tripal:latest
     links:
-      - chado:postgres
+      - postgres
     volumes:
       - ./volumes/tripal/html:/var/www/html/sites
       - ./volumes/tripal/private:/var/www/private
