@@ -15,6 +15,7 @@ services:
       UPLOAD_LIMIT: 20M
       MEMORY_LIMIT: 128M
       DB_HOST:  "chado"
+      DB_NAME: "postgres"
       #
       SITE_NAME: "${GMOD_SITE_NAME}"
       BASE_URL_PROTO: "${GMOD_BASE_URL_PROTO}"
