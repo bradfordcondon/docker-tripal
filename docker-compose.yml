@@ -9,17 +9,17 @@ services:
       - ./volumes/tripal/html:/var/www/html/sites
       - ./volumes/tripal/private:/var/www/private
     environment:
+      ADMIN_USER: ${GMOD_ADMIN_USER}
+      ADMIN_PASSWORD: ${GMOD_ADMIN_PASSWORD}
       UPLOAD_LIMIT: 20M
       MEMORY_LIMIT: 128M
       DB_HOST:  "chado"
-      SITE_NAME: "DivSeek Canada"
-      BASE_URL_PROTO: "http://"
-      BASE_URL_PATH: "/tripal"
-      BASE_URL: "${BASE_URL_PROTO}${GMOD_SITE_BASE_HOSTNAME}${BASE_URL_PATH}"
+      SITE_NAME: ${GMOD_SITE_NAME}
+      BASE_URL_PROTO: ${GMOD_SITE_NAME}
+      BASE_URL_PATH: ${GMOD_SITE_NAME}
+      BASE_URL: "${GMOD_BASE_URL_PROTO}${GMOD_SITE_BASE_HOSTNAME}${GMOD_BASE_URL_PATH}"
       TRIPAL_GIT_CLONE_LIBRARIES: "https://github.com/galaxyproject/blend4php.git"
       TRIPAL_DOWNLOAD_MODULES: "bootstrap maillog smtp jquery_update panels advanced_help"
-      ADMIN_USER: "admin"
-      ADMIN_PASSWORD: "changeme"
       #
       # BrAPI module fails to install correctly as of commit 962ffe4 of the tripal/brapi project
       # TRIPAL_GIT_CLONE_MODULES: "https://github.com/tripal/tripal_jbrowse.git https://github.com/tripal/brapi"
