@@ -5,6 +5,10 @@ FROM quay.io/galaxy-genome-annotation/tripal:latest
 
 MAINTAINER Richard Bruskiewich <richard@starinformatics.com>
 
+ARG DIVSEEK_ADMIN_USER
+# Create custom admin account
+ENV ADMIN_USER $DIVSEEK_ADMIN_USER
+
 COPY ./DivSeekCanadaLogo.* /
 
 # Overlay DivSeek Canada specific installation scripts
