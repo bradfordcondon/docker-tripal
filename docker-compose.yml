@@ -27,13 +27,8 @@ services:
       #
       TRIPAL_GIT_CLONE_LIBRARIES: "https://github.com/galaxyproject/blend4php.git"
       TRIPAL_DOWNLOAD_MODULES: "bootstrap maillog smtp jquery_update panels advanced_help"
-      #
-      # BrAPI module fails to install correctly as of commit 962ffe4 of the tripal/brapi project
-      # TRIPAL_GIT_CLONE_MODULES: "https://github.com/tripal/tripal_jbrowse.git https://github.com/tripal/brapi"
-      # TRIPAL_ENABLE_MODULES: "bootstrap jquery_update panels advanced_help tripal_jbrowse page_manager tracker forum brapi"
-      #
-      TRIPAL_GIT_CLONE_MODULES: "https://github.com/tripal/tripal_jbrowse.git"
-      TRIPAL_ENABLE_MODULES: "bootstrap maillog smtp jquery_update panels advanced_help page_manager tracker forum tripal_jbrowse tripal_galaxy"
+      TRIPAL_GIT_CLONE_MODULES: "https://github.com/tripal/tripal_jbrowse.git https://github.com/tripal/brapi"
+      TRIPAL_ENABLE_MODULES: "bootstrap maillog smtp jquery_update panels advanced_help page_manager tracker forum tripal_jbrowse tripal_galaxy brapi"
       THEME: "bootstrap"
     ports:
       - "8200:80"
