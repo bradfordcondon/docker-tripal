@@ -3,7 +3,7 @@
 Most of this README is verbatim from the [Docker Tripal](https://github.com/galaxy-genome-annotation/docker-tripal/)
 project but here we add a few quirks specific to the DivSeek Canada project version.
 
-## Tripal Configuration
+## Tripal Configuration for DivSeek Canada
 
 The DivSeek Canada variant uses a **.env** file to parameterize the Tripal site name and URL externally to the 
 docker-compose.yml file. To do this, the **template.env** file is copied into **.env** and site-specific parameters set.
@@ -11,6 +11,16 @@ The defaults are for the localhost publication of the site (e.g. for development
 is deployed to a production location behind a web server (e.g. NGINX) proxy, Tripal won't work properly without 
 resetting these environment variables to properly reflect the actual web URL used to access the site.
 
+## Composing the System
+
+The following sequence of startup is suggested. Note that the DivSeek Canada version builds a derivative version of the 
+tripal image.
+
+```
+$ cd docker-tripal
+$ docker-compose up -d chado
+$ docker-compose up -d --build
+```
 
 # Tripal Docker Image
 
