@@ -26,7 +26,7 @@ services:
       BASE_URL: "${GMOD_BASE_URL_PROTO}${GMOD_SITE_BASE_HOSTNAME}${GMOD_BASE_URL_PATH}"
       #
       TRIPAL_GIT_CLONE_LIBRARIES: "https://github.com/galaxyproject/blend4php.git"
-      TRIPAL_DOWNLOAD_MODULES: "bootstrap maillog smtp jquery_update panels advanced_help tripal_bulk_loader"
+      TRIPAL_DOWNLOAD_MODULES: "bootstrap maillog smtp jquery_update panels advanced_help"
       TRIPAL_GIT_CLONE_MODULES: "https://github.com/tripal/tripal_jbrowse.git https://github.com/tripal/brapi"
       TRIPAL_ENABLE_MODULES: "bootstrap maillog smtp jquery_update panels advanced_help page_manager tracker forum tripal_jbrowse tripal_galaxy brapi tripal_bulk_loader"
       THEME: "bootstrap"
