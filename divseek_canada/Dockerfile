@@ -11,7 +11,7 @@ ENV ADMIN_USER $DIVSEEK_ADMIN_USER
 
 # Point to actual Chado database host
 ARG DIVSEEK_CHADO
-ENV DB_HOST $DIVSEEK_CHADO
+ENV DB_HOST $DIVSEEK_DB_HOST
 
 COPY ./DivSeekCanadaLogo.* /
 
