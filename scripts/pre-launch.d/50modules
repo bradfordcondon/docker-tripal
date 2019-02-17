@@ -71,8 +71,10 @@ if [ ! -z "$TRIPAL_GIT_CLONE_MODULES" ]; then
         if [ -d "$module_name" ]; then
             echo "Skipping git clone of module $module_name from $repo_url, $module_name already exists in /var/www/html/sites/all/modules/$module_name"
         else
+            echo "Performing git clone of module $module_name from $repo_url into /var/www/html/sites/all/modules/$module_name"
             git clone $repo_url
             if [ "$repo_url" != "$rev" ]; then
+                echo "Resetting revision of module $module_name to commit $rev"
                 cd "$module_name"
                 git reset --hard $rev
                 cd /var/www/html/sites/all/modules/

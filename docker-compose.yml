@@ -8,29 +8,29 @@ services:
       context: ./divseek_canada
       dockerfile: Dockerfile
       args:
-        DIVSEEK_ADMIN_USER: "${GMOD_ADMIN_USER}"
+        DIVSEEK_ADMIN_USER: "${DC_ADMIN_USER}"
         DIVSEEK_DB_HOST: "chado"
     links:
       - chado:postgres
     volumes:
-      - ./volumes/tripal/html:/var/www/html/sites
-      - ./volumes/tripal/private:/var/www/private
+      - ../${DC_CROP}/volumes/tripal/sites:/var/www/html/sites
+      - ../${DC_CROP}/volumes/tripal/private:/var/www/private
     environment:
       UPLOAD_LIMIT: 20M
       MEMORY_LIMIT: 128M
       DB_HOST:  "chado"
       DB_NAME: "postgres"
       #
-      SITE_NAME: "${GMOD_SITE_NAME}"
-      BASE_URL_PROTO: "${GMOD_BASE_URL_PROTO}"
-      BASE_URL_PATH: "${GMOD_BASE_URL_PATH}"
-      BASE_URL: "${GMOD_BASE_URL_PROTO}${GMOD_SITE_BASE_HOSTNAME}${GMOD_BASE_URL_PATH}"
+      SITE_NAME: "${DC_SITE_NAME} ${DC_CROP}"
+      BASE_URL_PROTO: "${DC_BASE_URL_PROTO}"
+      BASE_URL_PATH: "${DC_BASE_URL_PATH}"
+      BASE_URL: "${DC_BASE_URL_PROTO}${DC_SITE_BASE_HOSTNAME}${DC_BASE_URL_PATH}"
       #
       TRIPAL_GIT_CLONE_LIBRARIES: "https://github.com/galaxyproject/blend4php.git"
-      TRIPAL_DOWNLOAD_MODULES: "bootstrap maillog smtp jquery_update panels advanced_help nd_genotypes"
+      TRIPAL_DOWNLOAD_MODULES: "bootstrap maillog smtp jquery_update panels advanced_help"
       TRIPAL_GIT_CLONE_MODULES: "https://github.com/tripal/tripal_jbrowse.git https://github.com/tripal/brapi
                                  https://github.com/tripal/trpdownload_api
-                                 https://github.com/UofS-Pulse-Binfo/nd_genotypes.git[@7b69e94c23b24e994ddd237037bfc5255399c3e7]"
+                                 https://github.com/UofS-Pulse-Binfo/nd_genotypes.git"
       TRIPAL_ENABLE_MODULES: "bootstrap maillog smtp jquery_update panels advanced_help page_manager tracker forum
                              tripal_jbrowse tripal_galaxy brapi tripal_bulk_loader nd_genotypes"
       THEME: "bootstrap"
@@ -50,11 +50,11 @@ services:
       INSTALL_YEAST_DATA: 0
       PGDATA: "/var/lib/postgresql/data/"
     volumes:
-      - ./volumes/tripal/db:/var/lib/postgresql/data/
+      - ../${DC_CROP}/volumes/tripal/db:/var/lib/postgresql/data/
 
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:6.5.1
     environment:
       TAKE_FILE_OWNERSHIP: "true"
     volumes:
-      - ./volumes/index:/usr/share/elasticsearch/data
+      - ../${DC_CROP}/volumes/index:/usr/share/elasticsearch/data
