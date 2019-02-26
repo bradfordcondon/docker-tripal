@@ -73,15 +73,20 @@ services:
     environment:
       POSTGRES_PASSWORD: postgres
       #
-      # Production NGINX needs to proxy to distinct container host server ports
+      # Settings for GMOD proxy
+      #
+      #SITE_PATH: "http://localhost:8200/jbrowse/"
+      #JBROWSE: "http://localhost:8200/jbrowse_actual/"
+      #
+      # Settings for localhost docker-tripal
+      #
+      SITE_PATH: "http://localhost:8203/"
+      JBROWSE: "http://localhost:8202/"
       #
       # NGINX should proxy jbrowse to staging server port 8203
-      #
-      SITE_PATH: "${DC_BASE_URL_PROTO}${DC_SITE_BASE_HOSTNAME}/jbrowse/"
-      #
+      #SITE_PATH: "${DC_BASE_URL_PROTO}${DC_SITE_BASE_HOSTNAME}/jbrowse/"
       # NGINX should proxy jbrowse_actual to staging server port 8202
-      #
-      JBROWSE:   "${DC_BASE_URL_PROTO}${DC_SITE_BASE_HOSTNAME}/jbrowse_actual/"
+      #JBROWSE:   "${DC_BASE_URL_PROTO}${DC_SITE_BASE_HOSTNAME}/jbrowse_actual/"
     ports:
       - "8202:8500"
     networks:
