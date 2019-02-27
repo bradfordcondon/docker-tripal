@@ -3,6 +3,10 @@
 Most of this README is verbatim from the [Docker Tripal](https://github.com/galaxy-genome-annotation/docker-tripal/)
 project but here we add a few quirks specific to the DivSeek Canada project version.
 
+## Preparation of the System
+
+Please follow the [https://github.com/DivSeek-Canada/divseek-canada-portal/blob/develop/README.md](DivSeek Canada Portal project README) with respect to disk volume provisions, installation of docker and docker-compose, plus proper configuration for elasticsearch, to prepare your system for building Docker-Tripal.
+
 ## Tripal Configuration for DivSeek Canada
 
 The DivSeek Canada variant uses a **.env** file to parameterize the Tripal site name and URL externally to the 
