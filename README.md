@@ -5,7 +5,7 @@ project but here we add a few quirks specific to the DivSeek Canada project vers
 
 ## Preparation of the System
 
-Please follow the [DivSeek Canada Portal project README](https://github.com/DivSeek-Canada/divseek-canada-portal/blob/develop/README.md) with respect to disk volume provisions, installation of docker and docker-compose, plus proper configuration for elasticsearch, to prepare your system for building Docker-Tripal.
+Please follow the [DivSeek Canada Portal project README](https://github.com/DivSeek-Canada/divseek-canada-portal/blob/divseek-canada-build/README.md) with respect to disk volume provisions, installation of docker and docker-compose, plus proper configuration for elasticsearch, to prepare your system for building Docker-Tripal.
 
 ## Tripal Configuration for DivSeek Canada
 
