@@ -36,7 +36,7 @@ services:
       #
       # Avoiding a strange  runtime error with tripal_bulk_loader by NOT enabling  it for now
       #
-      TRIPAL_ENABLE_MODULES: "bootstrap maillog smtp jquery_update panels advanced_help page_manager tracker forum
+      TRIPAL_ENABLE_MODULES: "bootstrap maillog smtp jquery_update panels advanced_help page_manager tracker 
                              tripal_jbrowse tripal_galaxy brapi nd_genotypes genotypes_loader tripal_jbrowse_mgmt"
       #                      tripal_jbrowse tripal_galaxy brapi tripal_bulk_loader nd_genotypes genotypes_loader tripal_jbrowse_mgmt"
       THEME: "bootstrap"
